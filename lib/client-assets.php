@@ -879,6 +879,13 @@ function gutenberg_editor_scripts_and_styles( $hook ) {
 		'titlePlaceholder'   => apply_filters( 'enter_title_here', __( 'Add title', 'gutenberg' ), $post ),
 	);
 
+	if ( array_key_exists( 'disable-custom-colors', $gutenberg_theme_support[0] ) ) {
+		$disable_custom_colors = $gutenberg_theme_support[0]['disable-custom-colors'];
+		if ( is_bool( $disable_custom_colors ) ) {
+			$editor_settings['disableCustomColors'] = $disable_custom_colors;
+		}
+	}
+
 	if ( ! empty( $color_palette ) ) {
 		$editor_settings['colors'] = $color_palette;
 	}
